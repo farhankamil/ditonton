@@ -1,15 +1,15 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
-import '../../../domain/entities/tv_series.dart';
-import '../../../domain/usecases/get_popular_tv_series.dart';
+import '../../../domain/entities/tvseries.dart';
+import '../../../domain/usecases/tvseries_get_popular.dart';
 
 part 'tv_series_popular_event.dart';
 part 'tv_series_popular_state.dart';
 
 class TvSeriesPopularBloc
     extends Bloc<TvSeriesPopularEvent, TvSeriesPopularState> {
-  final GetPopularTvSeries usecases;
+  final TvSeriesGetPopular usecases;
   TvSeriesPopularBloc(
     this.usecases,
   ) : super(TvSeriesPopularInitial()) {

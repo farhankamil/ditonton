@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../bloc/navigation/navigation_bloc.dart';
 import 'about_page.dart';
-import 'home_movie_page.dart';
-import 'tv_series_page.dart';
-import 'watchlist_movies_page.dart';
+import 'movies_home_page.dart';
+import 'tvseries_home_page.dart';
+import 'movies_watchlist_page.dart';
 
 class MainNavigation extends StatelessWidget {
   static const String routeName = '/navigation';
@@ -34,9 +34,9 @@ class MainNavigation extends StatelessWidget {
     ];
 
     const List<Widget> bottomNavScreen = <Widget>[
-      HomeMoviePage(),
-      TvSeriesPage(),
-      WatchlistMoviesPage(),
+      MoviesHomePage(),
+      TvSeriesHomePage(),
+      MoviesWatchlistPage(),
       AboutPage(),
     ];
 

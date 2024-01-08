@@ -16,7 +16,7 @@ void main() {
   });
 
   final tMovies = <Movie>[];
-  const tQuery = 'Rambo';
+  const tQuery = 'Spiderman';
 
   test('should get list of movies from the repository', () async {
     // arrange

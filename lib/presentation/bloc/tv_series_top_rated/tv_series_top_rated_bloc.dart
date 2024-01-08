@@ -1,9 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
-import 'package:ditonton/domain/usecases/get_top_rated_tv_series.dart';
+import 'package:ditonton/domain/usecases/tvseries_get_top_rated.dart';
 
-import '../../../domain/entities/tv_series.dart';
+import '../../../domain/entities/tvseries.dart';
 
 part 'tv_series_top_rated_event.dart';
 part 'tv_series_top_rated_state.dart';

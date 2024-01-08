@@ -1,12 +1,12 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
-import 'package:ditonton/domain/entities/tv_series_detail.dart';
-import 'package:ditonton/domain/usecases/get_watchlist_tv_series.dart';
-import 'package:ditonton/domain/usecases/remove_tv_series_watchlist.dart';
-import 'package:ditonton/domain/usecases/save_tv_series_watchlist.dart';
+import 'package:ditonton/domain/entities/tvseries_detail.dart';
+import 'package:ditonton/domain/usecases/tvseries_get_watchlist.dart';
+import 'package:ditonton/domain/usecases/tvseries_remove_watchlist.dart';
+import 'package:ditonton/domain/usecases/tvseries_save_watchlist.dart';
 
-import '../../../domain/entities/tv_series.dart';
+import '../../../domain/entities/tvseries.dart';
 
 part 'tv_series_watchlist_event.dart';
 part 'tv_series_watchlist_state.dart';
@@ -14,8 +14,8 @@ part 'tv_series_watchlist_state.dart';
 class TvSeriesWatchlistBloc
     extends Bloc<TvSeriesWatchlistEvent, TvSeriesWatchlistState> {
   final GetWatchlistTvSeries getWatchlistTvSeries;
-  final RemoveTvSeriesWatchlist removeTvSeriesWatchlist;
-  final SaveTvSeriesWatchlist saveTvSeriesWatchlist;
+  final TvSeriesRemoveWatchlist removeTvSeriesWatchlist;
+  final TvSeriesSaveWatchlist saveTvSeriesWatchlist;
 
   TvSeriesWatchlistBloc(
     this.getWatchlistTvSeries,

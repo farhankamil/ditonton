@@ -1,5 +1,6 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:ditonton/data/models/genre_model.dart';
-import 'package:ditonton/domain/entities/tv_series_detail.dart';
+import 'package:ditonton/domain/entities/tvseries_detail.dart';
 import 'package:equatable/equatable.dart';
 
 class TvSeriesDetailModel extends Equatable {

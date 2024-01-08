@@ -1,20 +1,20 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
-import 'package:ditonton/domain/entities/tv_series.dart';
-import 'package:ditonton/domain/entities/tv_series_detail.dart';
-import 'package:ditonton/domain/usecases/get_tv_series_detail.dart';
-import 'package:ditonton/domain/usecases/get_tv_series_recommendations.dart';
-import 'package:ditonton/domain/usecases/get_tv_series_watchlist_status.dart';
+import 'package:ditonton/domain/entities/tvseries.dart';
+import 'package:ditonton/domain/entities/tvseries_detail.dart';
+import 'package:ditonton/domain/usecases/tvseries_get_detail.dart';
+import 'package:ditonton/domain/usecases/tvseries_get_recommendations.dart';
+import 'package:ditonton/domain/usecases/tvseries_get_watchlist_status.dart';
 
 part 'tv_series_detail_event.dart';
 part 'tv_series_detail_state.dart';
 
 class TvSeriesDetailBloc
     extends Bloc<TvSeriesDetailEvent, TvSeriesDetailState> {
-  final GetTvSeriesDetail getTvSeriesDetail;
-  final GetTvSeriesRecommendations getTvSeriesRecommendations;
-  final GetTvSeriesWatchListStatus getTvSeriesWatchListStatus;
+  final TvSeriesGetDetail getTvSeriesDetail;
+  final TvSeriesGetRecommendations getTvSeriesRecommendations;
+  final TvSeriesGetWatchListStatus getTvSeriesWatchListStatus;
   TvSeriesDetailBloc(
     this.getTvSeriesDetail,
     this.getTvSeriesRecommendations,

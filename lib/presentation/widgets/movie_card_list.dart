@@ -3,7 +3,7 @@ import 'package:ditonton/common/constants.dart';
 import 'package:ditonton/domain/entities/movie.dart';
 import 'package:flutter/material.dart';
 
-import '../pages/movie_detail_page.dart';
+import '../pages/movies_detail_page.dart';
 
 class MovieCard extends StatelessWidget {
   final Movie movie;
@@ -18,7 +18,7 @@ class MovieCard extends StatelessWidget {
         onTap: () {
           Navigator.pushNamed(
             context,
-            MovieDetailPage.routeName,
+            MoviesDetailPage.routeName,
             arguments: movie.id,
           );
         },

@@ -1,15 +1,15 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
-import '../../../domain/entities/tv_series.dart';
-import '../../../domain/usecases/get_airing_tv_series.dart';
+import '../../../domain/entities/tvseries.dart';
+import '../../../domain/usecases/tvseries_get_airing.dart';
 
 part 'tv_series_airing_event.dart';
 part 'tv_series_airing_state.dart';
 
 class TvSeriesAiringBloc
     extends Bloc<TvSeriesAiringEvent, TvSeriesAiringState> {
-  final GetAiringTvSeries usecases;
+  final TvSeriesGetAiring usecases;
   TvSeriesAiringBloc(
     this.usecases,
   ) : super(TvSeriesAiringInitial()) {

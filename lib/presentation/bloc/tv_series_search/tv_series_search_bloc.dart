@@ -1,15 +1,15 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
-import '../../../domain/entities/tv_series.dart';
-import '../../../domain/usecases/search_tv_series.dart';
+import '../../../domain/entities/tvseries.dart';
+import '../../../domain/usecases/tvseries_search.dart';
 
 part 'tv_series_search_event.dart';
 part 'tv_series_search_state.dart';
 
 class TvSeriesSearchBloc
     extends Bloc<TvSeriesSearchEvent, TvSeriesSearchState> {
-  final SearchTvSeries usecases;
+  final TvSeriesSearch usecases;
   TvSeriesSearchBloc(
     this.usecases,
   ) : super(TvSeriesSearchInitial()) {
