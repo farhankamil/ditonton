@@ -9,6 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
+import '../widgets/error_message.dart';
+
 class MoviesDetailPage extends StatefulWidget {
   static const routeName = '/detail';
 
@@ -24,6 +26,10 @@ class MoviesDetailPageState extends State<MoviesDetailPage> {
   void initState() {
     super.initState();
 
+    context.read<MovieDetailBloc>().add(MovieDetailGetEvent(id: widget.id));
+  }
+
+  Future<void> _reloadData() async {
     context.read<MovieDetailBloc>().add(MovieDetailGetEvent(id: widget.id));
   }
 
@@ -47,7 +53,12 @@ class MoviesDetailPageState extends State<MoviesDetailPage> {
             );
           }
           if (state is MovieDetailError) {
-            return Text(state.message);
+            return ErrorMessage(
+              key: const Key('error_message'),
+              image: 'assets/no_wifi.png',
+              message: state.message,
+              onPressed: _reloadData,
+            );
           }
 
           return const Text('no data');
@@ -176,7 +187,9 @@ class _DetailContentState extends State<DetailContent> {
                               style: kHeading6,
                             ),
                             Text(
-                              widget.movie.overview,
+                              widget.movie.overview == ''
+                                  ? 'This series has no information.'
+                                  : widget.movie.overview,
                             ),
                             const SizedBox(height: 16),
                             Text(
@@ -256,9 +269,7 @@ class _DetailContentState extends State<DetailContent> {
                 ),
               );
             },
-            // initialChildSize: 0.5,
-            minChildSize: 0.25,
-            // maxChildSize: 1.0,
+            minChildSize: 0.30,
           ),
         ),
         Padding(

@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../bloc/tv_series_top_rated/tv_series_top_rated_bloc.dart';
-import '../widgets/sub_heading.dart';
+import '../widgets/error_message.dart';
+import '../widgets/title_heading.dart';
 import '../widgets/tvseries_list.dart';
 import 'tvseries_airing_page.dart';
 import 'tvseries_popular_page.dart';
@@ -24,6 +25,12 @@ class _TvSeriesHomePageState extends State<TvSeriesHomePage> {
   void initState() {
     super.initState();
 
+    context.read<TvSeriesAiringBloc>().add(TvSeriesAiringGetEvent());
+    context.read<TvSeriesPopularBloc>().add(TvSeriesPopularGetEvent());
+    context.read<TvSeriesTopRatedBloc>().add(TvSeriesTopRatedGetEvent());
+  }
+
+  Future<void> _reloadData() async {
     context.read<TvSeriesAiringBloc>().add(TvSeriesAiringGetEvent());
     context.read<TvSeriesPopularBloc>().add(TvSeriesPopularGetEvent());
     context.read<TvSeriesTopRatedBloc>().add(TvSeriesTopRatedGetEvent());
@@ -53,7 +60,7 @@ class _TvSeriesHomePageState extends State<TvSeriesHomePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SubHeading(
+              TitleHeading(
                 title: 'Now Playing',
                 onTap: () =>
                     Navigator.pushNamed(context, TvSeriesAiringPage.routeName),
@@ -70,13 +77,18 @@ class _TvSeriesHomePageState extends State<TvSeriesHomePage> {
                   }
 
                   if (state is TvSeriesAiringError) {
-                    return const Text('Failed');
+                    return ErrorMessage(
+                      key: const Key('error_message'),
+                      image: 'assets/no_wifi.png',
+                      message: state.message,
+                      onPressed: _reloadData,
+                    );
                   }
 
                   return const Text('No data');
                 },
               ),
-              SubHeading(
+              TitleHeading(
                 title: 'Popular',
                 onTap: () =>
                     Navigator.pushNamed(context, TvSeriesPopularPage.routeName),
@@ -94,13 +106,18 @@ class _TvSeriesHomePageState extends State<TvSeriesHomePage> {
                   }
 
                   if (state is TvSeriesPopularError) {
-                    return const Text('Failed');
+                    return ErrorMessage(
+                      key: const Key('error_message'),
+                      image: 'assets/no_wifi.png',
+                      message: state.message,
+                      onPressed: _reloadData,
+                    );
                   }
 
                   return const Text('no data');
                 },
               ),
-              SubHeading(
+              TitleHeading(
                 title: 'Top Rated',
                 onTap: () => Navigator.pushNamed(
                     context, TvSeriesTopRatedPage.routeName),
@@ -118,7 +135,12 @@ class _TvSeriesHomePageState extends State<TvSeriesHomePage> {
                   }
 
                   if (state is TvSeriesTopRatedError) {
-                    return const Text('Failed');
+                    return ErrorMessage(
+                      key: const Key('error_message'),
+                      image: 'assets/no_wifi.png',
+                      message: state.message,
+                      onPressed: _reloadData,
+                    );
                   }
 
                   return const Text('no data');

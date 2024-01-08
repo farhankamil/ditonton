@@ -40,7 +40,7 @@ void main() {
   const tQuery = 'oi';
 
   blocTest<TvSeriesSearchBloc, TvSeriesSearchState>(
-    'Testing emit [Loading, Loading] when data is gotten successfully',
+    'Verify emit [Loading, Loaded] when data is successfully retrieved',
     build: () {
       when(mockSearchTvSeries.execute(tQuery))
           .thenAnswer((_) async => Right(tTvSeriesList));
@@ -58,7 +58,7 @@ void main() {
   );
 
   blocTest<TvSeriesSearchBloc, TvSeriesSearchState>(
-    'Testing emit [Loading, Error] when get search is unsuccessful',
+    'Ensure emit [Loading, Error] when the search is unsuccessful',
     build: () {
       when(mockSearchTvSeries.execute(tQuery))
           .thenAnswer((_) async => const Left(ServerFailure('Server Failure')));

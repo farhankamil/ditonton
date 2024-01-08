@@ -37,9 +37,9 @@ void main() {
   );
   final tMovieList = <Movie>[tMovieModel];
   const tQuery = 'spiderman';
-  group('testing movie search bloc', () {
+  group('movie search bloc', () {
     blocTest<MovieSearchBloc, MovieSearchState>(
-      'Testing emit [Loading, Loaded] when data is gotten successfully',
+      'Verify emit [Loading, Loaded] on successful data retrieval',
       build: () {
         when(mockSearchMovies.execute(tQuery))
             .thenAnswer((_) async => Right(tMovieList));
@@ -57,7 +57,7 @@ void main() {
     );
 
     blocTest<MovieSearchBloc, MovieSearchState>(
-      'Testing emit [Loading, Error] when get search is unsuccessful',
+      'Ensure emit [Loading, Error] on unsuccessful search',
       build: () {
         when(mockSearchMovies.execute(tQuery)).thenAnswer(
             (_) async => const Left(ServerFailure('Server Failure')));

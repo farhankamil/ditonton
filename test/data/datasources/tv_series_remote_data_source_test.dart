@@ -11,7 +11,7 @@ import '../../helpers/test_helper.mocks.dart';
 import '../../json_reader.dart';
 
 void main() {
-  const apiKey = 'api_key=6d37959d5d8ea4dd3aee259761d87076';
+  const apiKey = 'api_key=4b3e28699a01f198becb6f70338e8018';
   const baseUrl = 'https://api.themoviedb.org/3';
 
   late TvSeriesRemoteDataSourceImpl dataSource;

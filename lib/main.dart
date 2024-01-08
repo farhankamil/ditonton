@@ -31,7 +31,7 @@ import 'presentation/pages/movies_top_rated_page.dart';
 import 'presentation/pages/tvseries_top_rated_page.dart';
 import 'presentation/pages/tvseries_detail_page.dart';
 import 'presentation/pages/tvseries_home_page.dart';
-import 'presentation/pages/movies_watchlist_page.dart';
+import 'presentation/pages/watchlist_page.dart';
 
 void main() async {
   di.init();
@@ -79,7 +79,6 @@ class MyApp extends StatelessWidget {
             case MoviesPopularPage.routeName:
               return CupertinoPageRoute(
                   builder: (_) => const MoviesPopularPage());
-
             case MoviesTopRatedPage.routeName:
               return CupertinoPageRoute(
                 builder: (_) => const MoviesTopRatedPage(),
@@ -125,7 +124,7 @@ class MyApp extends StatelessWidget {
                 builder: (_) {
                   return const Scaffold(
                     body: Center(
-                      child: Text('Halaman Tidak Di Temukan :('),
+                      child: Text('Page not found :('),
                     ),
                   );
                 },

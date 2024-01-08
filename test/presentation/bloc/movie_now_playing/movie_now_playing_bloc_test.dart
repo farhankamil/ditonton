@@ -39,9 +39,9 @@ void main() {
   );
   final tMovieList = <Movie>[tMovie];
 
-  group('test movie now playing bloc', () {
+  group('now playing bloc', () {
     blocTest<MovieNowPlayingBloc, MovieNowPlayingState>(
-      "test movie now playing emit [Loading, Loaded] when Get Now Playing Movie response is successfully",
+      "Ensure that 'Movie Now Playing' bloc emits [Loading, Loaded] when the response for Get Now Playing Movie is successful",
       build: () {
         when(
           mockGetNowPlayingMovies.execute(),
@@ -57,7 +57,7 @@ void main() {
     );
 
     blocTest<MovieNowPlayingBloc, MovieNowPlayingState>(
-      "Testing movie now playing emit [Loading, Error] when Get Now Playing Movie response is unsuccessful",
+      "Verify that 'Movie Now Playing' bloc emits [Loading, Error] when the response for Get Now Playing Movie is unsuccessful",
       build: () {
         when(
           mockGetNowPlayingMovies.execute(),

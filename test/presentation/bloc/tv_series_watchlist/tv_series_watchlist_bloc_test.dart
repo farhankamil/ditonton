@@ -38,7 +38,7 @@ void main() {
     "Get TV Series Watchlist",
     () {
       blocTest<TvSeriesWatchlistBloc, TvSeriesWatchlistState>(
-        "testing emit [Loading, Loaded] when responded successfully",
+        "Verify emit [Loading, Loaded] when the response is successful",
         build: () {
           when(
             mockGetWatchlistTvSeries.execute(),
@@ -55,7 +55,7 @@ void main() {
       );
 
       blocTest<TvSeriesWatchlistBloc, TvSeriesWatchlistState>(
-        "testing emit [Loading, Error] when responded unsuccessful",
+        "Ensure emit [Loading, Error] when the response is unsuccessful",
         build: () {
           when(
             mockGetWatchlistTvSeries.execute(),
@@ -78,7 +78,7 @@ void main() {
     "Save TV Series Watchlist",
     () {
       blocTest<TvSeriesWatchlistBloc, TvSeriesWatchlistState>(
-        "should emit [Loading, Loaded] when responded successfully",
+        "Verify emit [Loading, Loaded] when the response is successful",
         build: () {
           when(
             mockSaveTvSeriesWatchlist.execute(testTvSeriesDetail),
@@ -95,7 +95,7 @@ void main() {
       );
 
       blocTest<TvSeriesWatchlistBloc, TvSeriesWatchlistState>(
-        "testing emit [Loading, Error] when responded unsuccessful",
+        "Ensure emit [Loading, Error] when the response is unsuccessful",
         build: () {
           when(
             mockSaveTvSeriesWatchlist.execute(testTvSeriesDetail),
@@ -118,7 +118,7 @@ void main() {
     "Remove TV Series Watchlist",
     () {
       blocTest<TvSeriesWatchlistBloc, TvSeriesWatchlistState>(
-        "testing emit [Loading, Loaded] when responded successfully",
+        "Verify emit [Loading, Loaded] when the response is successful",
         build: () {
           when(
             mockRemoveTvSeriesWatchlist.execute(testTvSeriesDetail),
@@ -135,7 +135,7 @@ void main() {
       );
 
       blocTest<TvSeriesWatchlistBloc, TvSeriesWatchlistState>(
-        "testing emit [Loading, Error] when responded unsuccessful",
+        "Ensure emit [Loading, Error] when the response is unsuccessful",
         build: () {
           when(
             mockRemoveTvSeriesWatchlist.execute(testTvSeriesDetail),

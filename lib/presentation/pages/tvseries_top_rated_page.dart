@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../bloc/tv_series_top_rated/tv_series_top_rated_bloc.dart';
+import '../widgets/error_message.dart';
 
 class TvSeriesTopRatedPage extends StatefulWidget {
   static const routeName = '/top-series';
@@ -18,6 +19,10 @@ class TvSeriesTopRatedPageState extends State<TvSeriesTopRatedPage> {
   @override
   void initState() {
     super.initState();
+    context.read<TvSeriesTopRatedBloc>().add(TvSeriesTopRatedGetEvent());
+  }
+
+  Future<void> _reloadData() async {
     context.read<TvSeriesTopRatedBloc>().add(TvSeriesTopRatedGetEvent());
   }
 
@@ -46,9 +51,11 @@ class TvSeriesTopRatedPageState extends State<TvSeriesTopRatedPage> {
               );
             }
             if (state is TvSeriesTopRatedError) {
-              return Center(
+              return ErrorMessage(
                 key: const Key('error_message'),
-                child: Text(state.message),
+                image: 'assets/no_wifi.png',
+                message: state.message,
+                onPressed: _reloadData,
               );
             }
 

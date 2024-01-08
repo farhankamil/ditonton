@@ -1,18 +1,17 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ditonton/common/constants.dart';
-import 'package:ditonton/domain/entities/movie.dart';
 import 'package:ditonton/presentation/bloc/movie_now_playing/movie_now_playing_bloc.dart';
-import 'package:ditonton/presentation/pages/movies_detail_page.dart';
 import 'package:ditonton/presentation/pages/movies_popular_page.dart';
 import 'package:ditonton/presentation/pages/search_page.dart';
 import 'package:ditonton/presentation/pages/movies_top_rated_page.dart';
 
-import 'package:ditonton/presentation/widgets/sub_heading.dart';
+import 'package:ditonton/presentation/widgets/title_heading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../bloc/movie_popular/movie_popular_bloc.dart';
 import '../bloc/movie_top_rated/movie_top_rated_bloc.dart';
+import '../widgets/error_message.dart';
+import '../widgets/movie_list.dart';
 
 class MoviesHomePage extends StatefulWidget {
   static const String routeName = '/home';
@@ -26,6 +25,12 @@ class MoviesHomePageState extends State<MoviesHomePage> {
   @override
   void initState() {
     super.initState();
+    context.read<MovieNowPlayingBloc>().add(MovieNowPlayingGetEvent());
+    context.read<MoviePopularBloc>().add(MoviePopularGetEvent());
+    context.read<MovieTopRatedBloc>().add(MovieTopRatedGetEvent());
+  }
+
+  Future<void> _reloadData() async {
     context.read<MovieNowPlayingBloc>().add(MovieNowPlayingGetEvent());
     context.read<MoviePopularBloc>().add(MoviePopularGetEvent());
     context.read<MovieTopRatedBloc>().add(MovieTopRatedGetEvent());
@@ -71,13 +76,18 @@ class MoviesHomePageState extends State<MoviesHomePage> {
                   }
 
                   if (state is MovieNowPlayingError) {
-                    return const Text('Failed');
+                    return ErrorMessage(
+                      key: const Key('error_message'),
+                      image: 'assets/no_wifi.png',
+                      message: state.message,
+                      onPressed: _reloadData,
+                    );
                   }
 
                   return const Text('no data');
                 },
               ),
-              SubHeading(
+              TitleHeading(
                 title: 'Popular',
                 onTap: () =>
                     Navigator.pushNamed(context, MoviesPopularPage.routeName),
@@ -94,13 +104,18 @@ class MoviesHomePageState extends State<MoviesHomePage> {
                   }
 
                   if (state is MoviePopularError) {
-                    return const Text('Failed');
+                    return ErrorMessage(
+                      key: const Key('error_message'),
+                      image: 'assets/no_wifi.png',
+                      message: state.message,
+                      onPressed: _reloadData,
+                    );
                   }
 
                   return const Text('no data');
                 },
               ),
-              SubHeading(
+              TitleHeading(
                 title: 'Top Rated',
                 onTap: () =>
                     Navigator.pushNamed(context, MoviesTopRatedPage.routeName),
@@ -117,7 +132,12 @@ class MoviesHomePageState extends State<MoviesHomePage> {
                   }
 
                   if (state is MovieTopRatedError) {
-                    return const Text('Failed');
+                    return ErrorMessage(
+                      key: const Key('error_message'),
+                      image: 'assets/no_wifi.png',
+                      message: state.message,
+                      onPressed: _reloadData,
+                    );
                   }
 
                   return const Text('no data');
@@ -126,48 +146,6 @@ class MoviesHomePageState extends State<MoviesHomePage> {
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-class MovieList extends StatelessWidget {
-  final List<Movie> movies;
-
-  const MovieList(this.movies, {super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 200,
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemBuilder: (context, index) {
-          final movie = movies[index];
-          return Container(
-            padding: const EdgeInsets.all(8),
-            child: InkWell(
-              onTap: () {
-                Navigator.pushNamed(
-                  context,
-                  MoviesDetailPage.routeName,
-                  arguments: movie.id,
-                );
-              },
-              child: ClipRRect(
-                borderRadius: const BorderRadius.all(Radius.circular(16)),
-                child: CachedNetworkImage(
-                  imageUrl: '$baseImageUrl${movie.posterPath}',
-                  placeholder: (context, url) => const Center(
-                    child: CircularProgressIndicator(),
-                  ),
-                  errorWidget: (context, url, error) => const Icon(Icons.error),
-                ),
-              ),
-            ),
-          );
-        },
-        itemCount: movies.length,
       ),
     );
   }

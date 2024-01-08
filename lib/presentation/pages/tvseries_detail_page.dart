@@ -10,6 +10,8 @@ import 'package:ditonton/domain/entities/genre.dart';
 import 'package:ditonton/domain/entities/tvseries.dart';
 import 'package:ditonton/domain/entities/tvseries_detail.dart';
 
+import '../widgets/error_message.dart';
+
 class TvSeriesDetailPage extends StatefulWidget {
   static const routeName = '/detail-series';
 
@@ -24,6 +26,12 @@ class TvSeriesDetailPageState extends State<TvSeriesDetailPage> {
   @override
   void initState() {
     super.initState();
+    context
+        .read<TvSeriesDetailBloc>()
+        .add(TvSeriesDetailGetEvent(id: widget.id));
+  }
+
+  Future<void> _reloadData() async {
     context
         .read<TvSeriesDetailBloc>()
         .add(TvSeriesDetailGetEvent(id: widget.id));
@@ -49,7 +57,12 @@ class TvSeriesDetailPageState extends State<TvSeriesDetailPage> {
             );
           }
           if (state is TvSeriesDetailError) {
-            return Text(state.message);
+            return ErrorMessage(
+              key: const Key('error_message'),
+              image: 'assets/no_wifi.png',
+              message: state.message,
+              onPressed: _reloadData,
+            );
           }
 
           return const Text('no data');
@@ -155,7 +168,6 @@ class _DetailContentState extends State<DetailContent> {
                                 ],
                               ),
                             ),
-
                             Text(
                               _showGenres(widget.series.genres),
                             ),
@@ -180,7 +192,7 @@ class _DetailContentState extends State<DetailContent> {
                             ),
                             Text(
                               widget.series.overview == ''
-                                  ? 'Currently this series has no overview information.'
+                                  ? 'This series has no information.'
                                   : widget.series.overview,
                             ),
                             const SizedBox(height: 16),
@@ -188,7 +200,6 @@ class _DetailContentState extends State<DetailContent> {
                               'Recommendations',
                               style: kHeading6,
                             ),
-                            //recommendation tv series
                             SizedBox(
                               height: 150,
                               child: ListView.builder(
@@ -242,9 +253,7 @@ class _DetailContentState extends State<DetailContent> {
                 ),
               );
             },
-            // initialChildSize: 0.5,
-            minChildSize: 0.25,
-            // maxChildSize: 1.0,
+            minChildSize: 0.30,
           ),
         ),
         Padding(

@@ -70,9 +70,9 @@ void main() {
     voteCount: 1,
   );
 
-  group('test movie detail bloc', () {
+  group('Get Movie Detail', () {
     blocTest<MovieDetailBloc, MovieDetailState>(
-      "Test get detail by id emit [Loading, Loaded] when Movie Detail response is successfully",
+      "Test whether the event 'get detail by id' emits [Loading, Loaded] when the Movie Detail response is successful",
       build: () {
         when(
           mockGetMovieDetail.execute(tId),
@@ -99,7 +99,7 @@ void main() {
     );
 
     blocTest<MovieDetailBloc, MovieDetailState>(
-      "Test get detail emit [Loading, Error] when Get Movie Detail response is unsuccessful",
+      "Test whether the event 'get detail' emits [Loading, Error] when the response for getting Movie Detail is unsuccessful.",
       build: () {
         when(
           mockGetMovieDetail.execute(tId),
@@ -124,7 +124,7 @@ void main() {
     );
 
     blocTest<MovieDetailBloc, MovieDetailState>(
-      "test get detail emit [Loading, Error] when Movie Recommendations response is unsuccessful",
+      "Test whether the event 'get detail' emits [Loading, Error] when the response for getting Movie Recommendations is unsuccessful.",
       build: () {
         when(
           mockGetMovieDetail.execute(tId),

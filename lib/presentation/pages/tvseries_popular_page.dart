@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../bloc/tv_series_popular/tv_series_popular_bloc.dart';
+import '../widgets/error_message.dart';
 
 class TvSeriesPopularPage extends StatefulWidget {
   static const routeName = '/popular-series';
@@ -17,6 +18,10 @@ class TvSeriesPopularPageState extends State<TvSeriesPopularPage> {
   @override
   void initState() {
     super.initState();
+    context.read<TvSeriesPopularBloc>().add(TvSeriesPopularGetEvent());
+  }
+
+  Future<void> _reloadData() async {
     context.read<TvSeriesPopularBloc>().add(TvSeriesPopularGetEvent());
   }
 
@@ -45,9 +50,11 @@ class TvSeriesPopularPageState extends State<TvSeriesPopularPage> {
               );
             }
             if (state is TvSeriesPopularError) {
-              return Center(
+              return ErrorMessage(
                 key: const Key('error_message'),
-                child: Text(state.message),
+                image: 'assets/no_wifi.png',
+                message: state.message,
+                onPressed: _reloadData,
               );
             }
 

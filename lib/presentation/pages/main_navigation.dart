@@ -4,7 +4,7 @@ import '../bloc/navigation/navigation_bloc.dart';
 import 'about_page.dart';
 import 'movies_home_page.dart';
 import 'tvseries_home_page.dart';
-import 'movies_watchlist_page.dart';
+import 'watchlist_page.dart';
 
 class MainNavigation extends StatelessWidget {
   static const String routeName = '/navigation';

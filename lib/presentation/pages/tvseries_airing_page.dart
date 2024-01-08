@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../bloc/tv_series_airing/tv_series_airing_bloc.dart';
+import '../widgets/error_message.dart';
 import '../widgets/tvseries_card.dart';
 
 class TvSeriesAiringPage extends StatefulWidget {
@@ -17,6 +18,10 @@ class AiringSeriesPageState extends State<TvSeriesAiringPage> {
   @override
   void initState() {
     super.initState();
+    context.read<TvSeriesAiringBloc>().add(TvSeriesAiringGetEvent());
+  }
+
+  Future<void> _reloadData() async {
     context.read<TvSeriesAiringBloc>().add(TvSeriesAiringGetEvent());
   }
 
@@ -45,9 +50,11 @@ class AiringSeriesPageState extends State<TvSeriesAiringPage> {
               );
             }
             if (state is TvSeriesAiringError) {
-              return Center(
+              return ErrorMessage(
                 key: const Key('error_message'),
-                child: Text(state.message),
+                image: 'assets/no_wifi.png',
+                message: state.message,
+                onPressed: _reloadData,
               );
             }
 

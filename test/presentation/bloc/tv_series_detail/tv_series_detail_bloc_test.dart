@@ -64,9 +64,8 @@ void main() {
   );
 
   final testTvSeriesList = [testTvSeries];
-
   blocTest<TvSeriesDetailBloc, TvSeriesDetailState>(
-    "Testing emit [Loading, Loaded] when TV Series Detail response is successfully",
+    "Verify emit [Loading, Loaded] when TV Series Detail response is successful",
     build: () {
       when(
         mockGetTvSeriesDetail.execute(tId),
@@ -93,7 +92,7 @@ void main() {
   );
 
   blocTest<TvSeriesDetailBloc, TvSeriesDetailState>(
-    "Testing emit [Loading, Error] when TV Series Detail response is unsuccessful",
+    "Ensure emit [Loading, Error] when TV Series Detail response is unsuccessful",
     build: () {
       when(
         mockGetTvSeriesDetail.execute(tId),
@@ -116,7 +115,7 @@ void main() {
   );
 
   blocTest<TvSeriesDetailBloc, TvSeriesDetailState>(
-    "testing emit [Loading, Error] when TV Series Recommendations response is unsuccessful",
+    "Ensure emit [Loading, Error] when TV Series Recommendations response is unsuccessful",
     build: () {
       when(
         mockGetTvSeriesDetail.execute(tId),

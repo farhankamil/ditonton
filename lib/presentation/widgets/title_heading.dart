@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:ditonton/common/constants.dart';
 
-class SubHeading extends StatelessWidget {
-  const SubHeading({
+class TitleHeading extends StatelessWidget {
+  const TitleHeading({
     Key? key,
     required this.title,
     required this.onTap,

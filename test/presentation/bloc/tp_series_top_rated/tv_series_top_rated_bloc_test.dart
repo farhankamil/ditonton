@@ -37,9 +37,8 @@ void main() {
   );
 
   final tTvSeriesList = <TvSeries>[tTvSeries];
-
   blocTest<TvSeriesTopRatedBloc, TvSeriesTopRatedState>(
-    "Testing emit [Loading, Loaded] when Get Top Rated TV Series response is successfully",
+    "Verify emit [Loading, Loaded] when the response for Get Top Rated TV Series is successful",
     build: () {
       when(
         mockGetTopRatedTvSeries.execute(),
@@ -55,7 +54,7 @@ void main() {
   );
 
   blocTest<TvSeriesTopRatedBloc, TvSeriesTopRatedState>(
-    "Testing emit [Loading, Error] when Get Top Rated TV Series response is unsuccessful",
+    "Ensure emit [Loading, Error] when the response for Get Top Rated TV Series is unsuccessful",
     build: () {
       when(
         mockGetTopRatedTvSeries.execute(),

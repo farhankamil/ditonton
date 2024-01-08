@@ -37,9 +37,8 @@ void main() {
   );
 
   final tMovieList = <Movie>[tMovie];
-
   blocTest<MovieTopRatedBloc, MovieTopRatedState>(
-    "Testing emit [Loading, Loaded] when Get Top Rated Movie response is successfully",
+    "Verify emit [Loading, Loaded] when the response for Get Top Rated Movie is successful",
     build: () {
       when(
         mockGetTopRatedMovies.execute(),
@@ -55,7 +54,7 @@ void main() {
   );
 
   blocTest<MovieTopRatedBloc, MovieTopRatedState>(
-    "Testing emit [Loading, Error] when Get Top Rated Movie response is unsuccessful",
+    "Ensure emit [Loading, Error] when the response for Get Top Rated Movie is unsuccessful",
     build: () {
       when(
         mockGetTopRatedMovies.execute(),

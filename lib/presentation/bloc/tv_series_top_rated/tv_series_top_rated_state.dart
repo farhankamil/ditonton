@@ -11,15 +11,6 @@ class TvSeriesTopRatedInitial extends TvSeriesTopRatedState {}
 
 class TvSeriesTopRatedLoading extends TvSeriesTopRatedState {}
 
-class TvSeriesTopRatedError extends TvSeriesTopRatedState {
-  final String message;
-  const TvSeriesTopRatedError({
-    required this.message,
-  });
-  @override
-  List<Object> get props => [message];
-}
-
 class TvSeriesTopRatedLoaded extends TvSeriesTopRatedState {
   final List<TvSeries> tvSeriesList;
   const TvSeriesTopRatedLoaded({
@@ -28,4 +19,13 @@ class TvSeriesTopRatedLoaded extends TvSeriesTopRatedState {
 
   @override
   List<Object> get props => [tvSeriesList];
+}
+
+class TvSeriesTopRatedError extends TvSeriesTopRatedState {
+  final String message;
+  const TvSeriesTopRatedError({
+    required this.message,
+  });
+  @override
+  List<Object> get props => [message];
 }

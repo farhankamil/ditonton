@@ -34,7 +34,7 @@ void main() {
     "Get Movie Watchlist",
     () {
       blocTest<MovieWatchlistBloc, MovieWatchlistState>(
-        "Testing emit [Loading, Loaded] when responded successfully",
+        "Verify emit [Loading, Loaded] when the response is successful",
         build: () {
           when(
             mockGetWatchlistMovies.execute(),
@@ -50,7 +50,7 @@ void main() {
       );
 
       blocTest<MovieWatchlistBloc, MovieWatchlistState>(
-        "Testing emit [Loading, Error] when responded unsuccessful",
+        "Ensure emit [Loading, Error] when the response is unsuccessful",
         build: () {
           when(
             mockGetWatchlistMovies.execute(),
@@ -72,7 +72,7 @@ void main() {
     "Save Movie to Watchlist",
     () {
       blocTest<MovieWatchlistBloc, MovieWatchlistState>(
-        "testing emit [Loading, HasData] when responded successfully",
+        "Verify emit [Loading, HasData] when the response is successful",
         build: () {
           when(
             mockSaveWatchlist.execute(testMovieDetail),
@@ -89,7 +89,7 @@ void main() {
       );
 
       blocTest<MovieWatchlistBloc, MovieWatchlistState>(
-        "testing emit [Loading, Error] when responded unsuccessful",
+        "Ensure emit [Loading, Error] when the response is unsuccessful",
         build: () {
           when(
             mockSaveWatchlist.execute(testMovieDetail),
@@ -112,7 +112,7 @@ void main() {
     "Remove Movie to Watchlist",
     () {
       blocTest<MovieWatchlistBloc, MovieWatchlistState>(
-        "testing emit [Loading, HasData] when responded successfully",
+        "Verify emit [Loading, HasData] when the response is successful",
         build: () {
           when(
             mockRemoveWatchlist.execute(testMovieDetail),
@@ -129,7 +129,7 @@ void main() {
       );
 
       blocTest<MovieWatchlistBloc, MovieWatchlistState>(
-        "testing emit [Loading, Error] when responded unsuccessful",
+        "Ensure emit [Loading, Error] when the response is unsuccessful",
         build: () {
           when(
             mockRemoveWatchlist.execute(testMovieDetail),

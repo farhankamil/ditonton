@@ -2,11 +2,12 @@ import 'package:ditonton/common/constants.dart';
 import 'package:ditonton/common/utils.dart';
 import 'package:ditonton/presentation/bloc/movie_watchlist/movie_watchlist_bloc.dart';
 import 'package:ditonton/presentation/bloc/tv_series_watchlist/tv_series_watchlist_bloc.dart';
-
-import 'package:ditonton/presentation/widgets/movie_card_list.dart';
+import 'package:ditonton/presentation/widgets/movie_card.dart';
 import 'package:ditonton/presentation/widgets/tvseries_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../widgets/error_message.dart';
 
 class MoviesWatchlistPage extends StatefulWidget {
   static const routeName = '/watchlist-movie';
@@ -38,6 +39,11 @@ class MoviesWatchlistPageState extends State<MoviesWatchlistPage>
     context.read<TvSeriesWatchlistBloc>().add(TvSeriesWatchlistGetEvent());
   }
 
+  Future<void> _reloadData() async {
+    context.read<MovieWatchlistBloc>().add(MovieWatchlistGetEvent());
+    context.read<TvSeriesWatchlistBloc>().add(TvSeriesWatchlistGetEvent());
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,7 +61,7 @@ class MoviesWatchlistPageState extends State<MoviesWatchlistPage>
                 'Movie',
                 style: kHeading6,
               ),
-              const SizedBox(height: 8.0),
+              const SizedBox(height: 10),
               BlocBuilder<MovieWatchlistBloc, MovieWatchlistState>(
                 builder: (context, state) {
                   if (state is MovieWatchlistLoading) {
@@ -67,8 +73,21 @@ class MoviesWatchlistPageState extends State<MoviesWatchlistPage>
                     return Column(
                       children: [
                         state.movies.isEmpty
-                            ? const Text(
-                                'Empty',
+                            ? Center(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Image.asset(
+                                      "assets/folder_empty.png",
+                                      height: 150,
+                                      width: 150,
+                                    ),
+                                    const SizedBox(
+                                      height: 15,
+                                    ),
+                                    const Text('Add movies to your wishlist.'),
+                                  ],
+                                ),
                               )
                             : ListView.builder(
                                 physics: const NeverScrollableScrollPhysics(),
@@ -83,20 +102,22 @@ class MoviesWatchlistPageState extends State<MoviesWatchlistPage>
                     );
                   }
                   if (state is MovieWatchlistError) {
-                    return Center(
+                    return ErrorMessage(
                       key: const Key('error_message'),
-                      child: Text(state.message),
+                      image: 'assets/no_wifi.png',
+                      message: state.message,
+                      onPressed: _reloadData,
                     );
                   }
                   return const Text('no data');
                 },
               ),
-              const SizedBox(height: 8.0),
+              const SizedBox(height: 20),
               Text(
                 'TV Series',
                 style: kHeading6,
               ),
-              const SizedBox(height: 8.0),
+              const SizedBox(height: 10),
               BlocBuilder<TvSeriesWatchlistBloc, TvSeriesWatchlistState>(
                 builder: (context, state) {
                   if (state is TvSeriesWatchlistLoading) {
@@ -108,8 +129,23 @@ class MoviesWatchlistPageState extends State<MoviesWatchlistPage>
                     return Column(
                       children: [
                         state.tvSeriesList.isEmpty
-                            ? const Text(
-                                'Empty',
+                            ? Center(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Image.asset(
+                                      "assets/folder_empty.png",
+                                      height: 150,
+                                      width: 150,
+                                    ),
+                                    const SizedBox(
+                                      height: 15,
+                                    ),
+                                    const Text(
+                                      'Add TV Series to your wishlist.',
+                                    ),
+                                  ],
+                                ),
                               )
                             : ListView.builder(
                                 physics: const NeverScrollableScrollPhysics(),
@@ -124,9 +160,11 @@ class MoviesWatchlistPageState extends State<MoviesWatchlistPage>
                     );
                   }
                   if (state is TvSeriesWatchlistError) {
-                    return Center(
+                    return ErrorMessage(
                       key: const Key('error_message'),
-                      child: Text(state.message),
+                      image: 'assets/no_wifi.png',
+                      message: state.message,
+                      onPressed: _reloadData,
                     );
                   }
 

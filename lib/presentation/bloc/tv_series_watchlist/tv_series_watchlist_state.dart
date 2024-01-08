@@ -11,6 +11,16 @@ class TvSeriesWatchlistInitial extends TvSeriesWatchlistState {}
 
 class TvSeriesWatchlistLoading extends TvSeriesWatchlistState {}
 
+class TvSeriesWatchlistLoaded extends TvSeriesWatchlistState {
+  final List<TvSeries> tvSeriesList;
+  const TvSeriesWatchlistLoaded({
+    required this.tvSeriesList,
+  });
+
+  @override
+  List<Object> get props => [tvSeriesList];
+}
+
 class TvSeriesWatchlistError extends TvSeriesWatchlistState {
   final String message;
   const TvSeriesWatchlistError({
@@ -27,14 +37,4 @@ class TvSeriesWatchlistSuccess extends TvSeriesWatchlistState {
   });
   @override
   List<Object> get props => [message];
-}
-
-class TvSeriesWatchlistLoaded extends TvSeriesWatchlistState {
-  final List<TvSeries> tvSeriesList;
-  const TvSeriesWatchlistLoaded({
-    required this.tvSeriesList,
-  });
-
-  @override
-  List<Object> get props => [tvSeriesList];
 }

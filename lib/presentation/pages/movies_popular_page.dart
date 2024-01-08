@@ -1,7 +1,9 @@
 import 'package:ditonton/presentation/bloc/movie_popular/movie_popular_bloc.dart';
-import 'package:ditonton/presentation/widgets/movie_card_list.dart';
+import 'package:ditonton/presentation/widgets/movie_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../widgets/error_message.dart';
 
 class MoviesPopularPage extends StatefulWidget {
   static const routeName = '/popular-movie';
@@ -13,9 +15,14 @@ class MoviesPopularPage extends StatefulWidget {
 }
 
 class MoviesPopularPageState extends State<MoviesPopularPage> {
+  bool isConnected = true;
   @override
   void initState() {
     super.initState();
+    context.read<MoviePopularBloc>().add(MoviePopularGetEvent());
+  }
+
+  Future<void> _reloadData() async {
     context.read<MoviePopularBloc>().add(MoviePopularGetEvent());
   }
 
@@ -44,9 +51,11 @@ class MoviesPopularPageState extends State<MoviesPopularPage> {
               );
             }
             if (state is MoviePopularError) {
-              return Center(
+              return ErrorMessage(
                 key: const Key('error_message'),
-                child: Text(state.message),
+                image: 'assets/no_wifi.png',
+                message: state.message,
+                onPressed: _reloadData,
               );
             }
 

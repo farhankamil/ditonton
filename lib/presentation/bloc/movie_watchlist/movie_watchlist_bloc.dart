@@ -23,8 +23,7 @@ class MovieWatchlistBloc
   ) : super(MovieWatchlistInitial()) {
     on<MovieWatchlistGetEvent>((event, emit) async {
       emit(MovieWatchlistLoading());
-      final result = await getWatchlistMovies
-          .execute(); // todo eturn _repository.getWatchlistMovies();
+      final result = await getWatchlistMovies.execute();
       result.fold(
         (l) => emit(MovieWatchlistError(message: l.message)),
         (r) => emit(MovieWatchlistLoaded(movies: r)),

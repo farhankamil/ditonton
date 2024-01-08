@@ -11,15 +11,6 @@ class MoviePopularInitial extends MoviePopularState {}
 
 class MoviePopularLoading extends MoviePopularState {}
 
-class MoviePopularError extends MoviePopularState {
-  final String message;
-  const MoviePopularError({
-    required this.message,
-  });
-  @override
-  List<Object> get props => [message];
-}
-
 class MoviePopularLoaded extends MoviePopularState {
   final List<Movie> movies;
   const MoviePopularLoaded({
@@ -28,4 +19,13 @@ class MoviePopularLoaded extends MoviePopularState {
 
   @override
   List<Object> get props => [movies];
+}
+
+class MoviePopularError extends MoviePopularState {
+  final String message;
+  const MoviePopularError({
+    required this.message,
+  });
+  @override
+  List<Object> get props => [message];
 }

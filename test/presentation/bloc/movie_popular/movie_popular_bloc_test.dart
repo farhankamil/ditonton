@@ -38,9 +38,8 @@ void main() {
     voteCount: 1,
   );
   final tMovieList = <Movie>[tMovie];
-
   blocTest<MoviePopularBloc, MoviePopularState>(
-    "Testing movie populier emit [Loading, Loaded] when Get Popular Movie response is successfully",
+    "Verify that 'Movie Popular' bloc emits [Loading, Loaded] when the response for Get Popular Movie is successful",
     build: () {
       when(
         mockGetPopularMovies.execute(),
@@ -55,7 +54,7 @@ void main() {
   );
 
   blocTest<MoviePopularBloc, MoviePopularState>(
-    "Testing movie popular emit [Loading, Error] when Get Popular Movie response is unsuccessful",
+    "Ensure that 'Movie Popular' bloc emits [Loading, Error] when the response for Get Popular Movie is unsuccessful",
     build: () {
       when(
         mockGetPopularMovies.execute(),
