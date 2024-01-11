@@ -28,6 +28,8 @@ class TvSeriesRepositoryImpl implements TvSeriesRepository {
       return const Left(ServerFailure(''));
     } on SocketException {
       return const Left(ConnectionFailure('Failed to connect to the network'));
+    } on TlsException {
+      return const Left(SSLFailure('CERTIFICATE_FAILED'));
     }
   }
 
@@ -40,6 +42,8 @@ class TvSeriesRepositoryImpl implements TvSeriesRepository {
       return const Left(ServerFailure(''));
     } on SocketException {
       return const Left(ConnectionFailure('Failed to connect to the network'));
+    } on TlsException {
+      return const Left(SSLFailure('CERTIFICATE_FAILED'));
     }
   }
 
@@ -54,6 +58,8 @@ class TvSeriesRepositoryImpl implements TvSeriesRepository {
       return const Left(ServerFailure(''));
     } on SocketException {
       return const Left(ConnectionFailure('Failed to connect to the network'));
+    } on TlsException {
+      return const Left(SSLFailure('CERTIFICATE_FAILED'));
     }
   }
 
@@ -66,6 +72,8 @@ class TvSeriesRepositoryImpl implements TvSeriesRepository {
       return const Left(ServerFailure(''));
     } on SocketException {
       return const Left(ConnectionFailure('Failed to connect to the network'));
+    } on TlsException {
+      return const Left(SSLFailure('CERTIFICATE_FAILED'));
     }
   }
 
@@ -78,6 +86,8 @@ class TvSeriesRepositoryImpl implements TvSeriesRepository {
       return const Left(ServerFailure(''));
     } on SocketException {
       return const Left(ConnectionFailure('Failed to connect to the network'));
+    } on TlsException {
+      return const Left(SSLFailure('CERTIFICATE_FAILED'));
     }
   }
 
@@ -90,6 +100,8 @@ class TvSeriesRepositoryImpl implements TvSeriesRepository {
       return const Left(ServerFailure(''));
     } on SocketException {
       return const Left(ConnectionFailure('Failed to connect to the network'));
+    } on TlsException {
+      return const Left(SSLFailure('CERTIFICATE_FAILED'));
     }
   }
 
@@ -102,6 +114,8 @@ class TvSeriesRepositoryImpl implements TvSeriesRepository {
       return Right(result);
     } on DatabaseException catch (e) {
       return Left(DatabaseFailure(e.message));
+    } on TlsException {
+      return const Left(SSLFailure('CERTIFICATE_FAILED'));
     } catch (e) {
       rethrow;
     }

@@ -1,11 +1,15 @@
 import 'package:ditonton/common/constants.dart';
 import 'package:ditonton/common/utils.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ditonton/injection.dart' as di;
 
+import 'common/ssl_pinning.dart';
+import 'firebase_options.dart';
 import 'presentation/bloc/movie_detail/movie_detail_bloc.dart';
 import 'presentation/bloc/movie_now_playing/movie_now_playing_bloc.dart';
 import 'presentation/bloc/movie_popular/movie_popular_bloc.dart';
@@ -34,6 +38,12 @@ import 'presentation/pages/tvseries_home_page.dart';
 import 'presentation/pages/watchlist_page.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
+  await SSLPinning.init();
   di.init();
   runApp(const MyApp());
 }

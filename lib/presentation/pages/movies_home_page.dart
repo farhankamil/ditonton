@@ -12,6 +12,7 @@ import '../bloc/movie_popular/movie_popular_bloc.dart';
 import '../bloc/movie_top_rated/movie_top_rated_bloc.dart';
 import '../widgets/error_message.dart';
 import '../widgets/movie_list.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 
 class MoviesHomePage extends StatefulWidget {
   static const String routeName = '/home';

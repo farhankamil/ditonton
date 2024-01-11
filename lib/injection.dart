@@ -16,9 +16,9 @@ import 'package:ditonton/domain/usecases/save_watchlist.dart';
 import 'package:ditonton/domain/usecases/search_movies.dart';
 import 'package:ditonton/domain/usecases/tvseries_search.dart';
 import 'package:ditonton/presentation/bloc/movie_detail/movie_detail_bloc.dart';
-import 'package:http/http.dart' as http;
 import 'package:get_it/get_it.dart';
 
+import 'common/ssl_pinning.dart';
 import 'data/datasources/tv_series_local_data_source.dart';
 import 'data/datasources/tv_series_remote_data_source.dart';
 import 'data/repositories/tv_series_repository_impl.dart';
@@ -47,6 +47,9 @@ import 'presentation/bloc/tv_series_watchlist/tv_series_watchlist_bloc.dart';
 final locator = GetIt.instance;
 
 void init() {
+// todo sslpinning
+  locator.registerLazySingleton(() => SSLPinning.client);
+
   // todo bloc
   locator.registerFactory(
     () => NavigationBloc(),
@@ -210,7 +213,4 @@ void init() {
 
   // todo dbHelper
   locator.registerLazySingleton<DatabaseHelper>(() => DatabaseHelper());
-
-  // todo http
-  locator.registerLazySingleton(() => http.Client());
 }
