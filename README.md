@@ -1,7 +1,10 @@
 # Ditonton
+----------------------------------------------------------------------------------------
+
 [![Codemagic build status](https://api.codemagic.io/apps/659f7e28a221e4a532272087/659f7e28a221e4a532272086/status_badge.svg)](https://codemagic.io/apps/659f7e28a221e4a532272087/659f7e28a221e4a532272086/latest_build)
 
 ### 🎉 Features App
+----------------------------------------------------------------------------------------
 
 - Catalog List Movies & TV Series
 - Now Playing, Popular & Top Rated
@@ -11,7 +14,7 @@
 - Season & Episode TV Series
 
 ### 🛠️ Built With
-
+----------------------------------------------------------------------------------------
 - [Bloc](https://pub.dev/packages/flutter_bloc)
 - [Cached Network Image](https://pub.dev/packages/cached_network_image)
 - [Dartz](https://pub.dev/packages/dartz)
@@ -29,4 +32,5 @@
 
 
 ### 🌐 ️Resources
+----------------------------------------------------------------------------------------
 - [The Movie DB API](https://www.themoviedb.org/)
