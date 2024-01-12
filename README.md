@@ -1,16 +1,27 @@
 # ditonton
 
-A new Flutter project.
+Repository ini merupakan project submission kelas Flutter Expert Dicoding.
 
-## Getting Started
+## Tips Submission Akhir
 
-This project is a starting point for a Flutter application.
+Jika kamu menerapkan modular pada project, Anda dapat memanfaatkan berkas test.sh pada repository ini. Berkas tersebut dapat mempermudah proses testing melalui terminal atau command prompt. Sebelumnya menjalankan berkas tersebut, ikuti beberapa langkah berikut:
 
-A few resources to get you started if this is your first Flutter project:
+Install terlebih dahulu aplikasi sesuai dengan Operating System (OS) yang Anda gunakan.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Bagi pengguna Linux, jalankan perintah berikut pada terminal.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+sudo apt-get update -qq -y
+sudo apt-get install lcov -y
+
+Bagi pengguna Mac, jalankan perintah berikut pada terminal.
+
+brew install lcov
+
+Bagi pengguna Windows, ikuti langkah berikut.
+
+Install Chocolatey pada komputermu.
+Setelah berhasil, install lcov dengan menjalankan perintah berikut.
+
+choco install lcov
+
+Kemudian cek Environtment Variabel pada kolom System variabels terdapat variabel GENTHTML dan LCOV_HOME. Jika tidak tersedia, Anda bisa menambahkan variabel baru dengan nilai seperti berikut.
