@@ -1,27 +1,32 @@
-# ditonton
+# Ditonton
+[![Codemagic build status](https://api.codemagic.io/apps/659f7e28a221e4a532272087/659f7e28a221e4a532272086/status_badge.svg)](https://codemagic.io/apps/659f7e28a221e4a532272087/659f7e28a221e4a532272086/latest_build)
 
-Repository ini merupakan project submission kelas Flutter Expert Dicoding.
+### 🎉 Features App
 
-## Tips Submission Akhir
+- Catalog List Movies & TV Series
+- Now Playing, Popular & Top Rated
+- Search Movies & TV Series
+- Detail Movies & TV Series
+- Watchlist Movies & TV Series
+- Season & Episode TV Series
 
-Jika kamu menerapkan modular pada project, Anda dapat memanfaatkan berkas test.sh pada repository ini. Berkas tersebut dapat mempermudah proses testing melalui terminal atau command prompt. Sebelumnya menjalankan berkas tersebut, ikuti beberapa langkah berikut:
+### 🛠️ Built With
 
-Install terlebih dahulu aplikasi sesuai dengan Operating System (OS) yang Anda gunakan.
+- [Bloc](https://pub.dev/packages/flutter_bloc)
+- [Cached Network Image](https://pub.dev/packages/cached_network_image)
+- [Dartz](https://pub.dev/packages/dartz)
+- [Equatable](https://https://pub.dev/packages/equatable)
+- [Firebase Analytics & Crashlytics](https://firebase.google.com/?hl=id)
+- [Flutter](https://flutter.dev/)
+- [Flutter Rating Bar](https://pub.dev/packages/flutter_rating_bar)
+- [Get It](https://pub.dev/packages/get_it)
+- [http](https://pub.dev/packages/http)
+- [sqflite](https://pub.dev/packages/sqflite)
+- TDD Clean Architecture.
+- SSL Pinning Security.
+- Modularization.
+- Automated Testing Test Coverage.
 
-Bagi pengguna Linux, jalankan perintah berikut pada terminal.
 
-sudo apt-get update -qq -y
-sudo apt-get install lcov -y
-
-Bagi pengguna Mac, jalankan perintah berikut pada terminal.
-
-brew install lcov
-
-Bagi pengguna Windows, ikuti langkah berikut.
-
-Install Chocolatey pada komputermu.
-Setelah berhasil, install lcov dengan menjalankan perintah berikut.
-
-choco install lcov
-
-Kemudian cek Environtment Variabel pada kolom System variabels terdapat variabel GENTHTML dan LCOV_HOME. Jika tidak tersedia, Anda bisa menambahkan variabel baru dengan nilai seperti berikut.
+### 🌐 ️Resources
+- [The Movie DB API](https://www.themoviedb.org/)
