@@ -1,6 +1,9 @@
 # Ditonton
 ----------------------------------------------------------------------------------------
 
+![www northbound co (1)](https://github.com/farhankamil/ditonton/assets/86393497/5e01d26c-5e05-4f64-a6c9-d2adf22df4c4)
+
+
 [![Codemagic build status](https://api.codemagic.io/apps/659f7e28a221e4a532272087/659f7e28a221e4a532272086/status_badge.svg)](https://codemagic.io/apps/659f7e28a221e4a532272087/659f7e28a221e4a532272086/latest_build)
 
 ### 🎉 Features App
